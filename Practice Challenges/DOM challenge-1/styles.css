@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Login-btn{
+    text-align: center;
+       width:700px;
+    margin: 25px auto;
+    height: 50vh;
+background-color:aquamarine ;
+}
+
+button{
+    margin:20px auto;
+    border-radius:10px;
+    border: none;
+    padding:10px;
+}
+
+p{
+    color:red
+}
