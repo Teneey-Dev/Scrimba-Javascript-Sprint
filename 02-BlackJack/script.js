@@ -3,13 +3,13 @@ let secondCard = 5
 
 let sum = firstCard + secondCard 
 
-// IF Else Class-work
-
-let age = 22
-
-if(age < 21) {
-console.log("You cannot enter the club")
+if(sum <= 20) {
+console.log("Do you want to draw a new card? 🙂")
 }
-else {
-console.log("Welcome")
+else if(sum === 21) {
+console.log("Wohoo! You've got Blackjack! 🥳")
+} else {
+   console.log("You're out of the game! 😭")
 }
+ 
+ 
