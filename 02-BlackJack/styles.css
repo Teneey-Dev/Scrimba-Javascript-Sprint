@@ -7,6 +7,8 @@
 body {
     background: green;
     text-align: center;
+    font-weight: bold;
+    color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -14,12 +16,24 @@ h1{
     color: goldenrod;
     margin:10px;
     font-size: 3rem;
+ }
+
+#message-el {
+    font-style: italic;
 }
 
 p{
+    margin: 10px;
     font-size: 1.5rem;
-    color:white;
-    padding:10px;
-   
 }
 
+button {
+ 
+    background: goldenrod;
+    color: #016f32;
+    padding: 10px ;
+    width:150px;
+    font-weight:bold;
+    border:none;
+    border-radius:3px;
+}
