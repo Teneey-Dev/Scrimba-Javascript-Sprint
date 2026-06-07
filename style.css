@@ -1,29 +1,84 @@
-  body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f4f7f6;
-            color: #333;
-        }
+/* Reset basic spacing issues */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        h1 { color: #05386b;
-             border-bottom: 2px solid #5cdb95; 
-             padding-bottom: 10px; }
-             
-        ul { list-style-type: none;
-             padding: 0; }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0f172a; /* Sleek modern dark background */
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-        li { margin: 15px 0;
-             background: white;
-              padding: 15px;
-               border-radius: 5px;
-               box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-             }
-        a { text-decoration: none; 
-            color: #379683;
-             font-weight: bold;
-              font-size: 18px; }
-        a:hover { 
-            color: #5cdb95;
-         }
+/* Centered Project Frame */
+.portfolio-container {
+    max-width: 600px;
+    width: 100%;
+    background-color: #1e293b; /* Premium card background */
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    border: 1px solid #334155;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+p {
+    color: #94a3b8; /* Muted gray for description text */
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+li:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom Styled Link Buttons */
+li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #f1f5f9;
+    background-color: #273549; /* Dark button card background */
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out; /* Smooth transition when hovered */
+}
+
+/* Interactive Hover States */
+li a:hover {
+    background-color: #2e3f56;
+    border-color: #5f9341; /* Highlights with your green color */
+    transform: translateY(-2px); /* Makes the card lift up slightly */
+    box-shadow: 0 4px 12px rgba(95, 147, 65, 0.2);
+    color: #5f9341; /* Text shifts to your accent green */
+}
+
+/* Alignment spacing for emojis */
+.emoji {
+    margin-right: 12px;
+    font-size: 1.3rem;
+}
