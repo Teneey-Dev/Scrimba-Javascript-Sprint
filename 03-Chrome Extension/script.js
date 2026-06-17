@@ -1,3 +1,12 @@
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+ import { getDatabase } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+ const firebaseConfig = {
+  databaseURL: "https://tutorial-a67a6-default-rtdb.europe-west1.firebasedatabase.app/"
+ } 
+
+ const app = initializeApp(firebaseConfig);
+ const database = getDatabase(app)
 
 let myLeads = []
 const inputEl = document.querySelector("#input-el")
@@ -5,12 +14,24 @@ const inputBtn = document.querySelector("#input-btn")
 const ulEl = document.querySelector("#ul-el")
  const deleteBtn = document.querySelector("#delete-btn")
 const  leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-console.log(leadsFromLocalStorage);
+const tabBtn = document.querySelector("#tab-btn")
 
 if(leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage
 render(myLeads)
 }
+
+
+
+tabBtn.addEventListener("click", function(){
+     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+  myLeads.push(tabs[0].url)
+localStorage.setItem("myLeads", JSON.stringify(myLeads))
+render(myLeads)
+})
+
+}) 
+
 
 function render(leads) {
 let listItems = ""
@@ -36,8 +57,6 @@ myLeads.push(inputEl.value)
 inputEl.value = ""
 localStorage.setItem("myLeads", JSON.stringify(myLeads))
 render(myLeads)
-
-    console.log( localStorage.getItem("myLeads"))
 }) 
 
 
