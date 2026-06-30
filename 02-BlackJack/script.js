@@ -75,8 +75,4 @@ cards.push(card)
 renderGame()
    }
 }
-
- 
-  
- 
  

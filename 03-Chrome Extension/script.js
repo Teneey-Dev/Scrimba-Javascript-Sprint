@@ -1,36 +1,30 @@
- import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
- import { getDatabase } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js"
+ import { getDatabase,
+          ref,
+          push,
+          onValue,
+          remove} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js"
+import config from "./config.js";
 
  const firebaseConfig = {
-  databaseURL: "https://tutorial-a67a6-default-rtdb.europe-west1.firebasedatabase.app/"
- } 
+  databaseURL: config.DATABASE_URL
+ }  
 
  const app = initializeApp(firebaseConfig);
  const database = getDatabase(app)
+const referenceInDB = ref(database, "leads")
 
-let myLeads = []
+
+ console.log(firebaseConfig.databaseURL)
+
+
 const inputEl = document.querySelector("#input-el")
 const inputBtn = document.querySelector("#input-btn")
 const ulEl = document.querySelector("#ul-el")
  const deleteBtn = document.querySelector("#delete-btn")
-const  leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-const tabBtn = document.querySelector("#tab-btn")
-
-if(leadsFromLocalStorage) {
-  myLeads = leadsFromLocalStorage
-render(myLeads)
-}
 
 
 
-tabBtn.addEventListener("click", function(){
-     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  myLeads.push(tabs[0].url)
-localStorage.setItem("myLeads", JSON.stringify(myLeads))
-render(myLeads)
-})
-
-}) 
 
 
 function render(leads) {
@@ -45,18 +39,24 @@ for (let i = 0; i < leads.length; i++) {
   ulEl.innerHTML = listItems  
 }
 
+onValue(referenceInDB, function(snapshot) {
+  const snapshotExists = snapshot.exists() 
+  if(snapshotExists) {
+const snapshotValues = snapshot.val()
+const leads = Object.values(snapshotValues)
+ render (leads );
+  }
+})
 
-deleteBtn.addEventListener("dblclick", function() {
-  localStorage.clear()
-  myLeads = []
-  render(myLeads)
+deleteBtn.addEventListener("dblclick", function() { 
+remove(referenceInDB)
+ulEl.innerHTML = ""
 } )
 
 inputBtn.addEventListener ("click", function () {
-myLeads.push(inputEl.value)
-inputEl.value = ""
-localStorage.setItem("myLeads", JSON.stringify(myLeads))
-render(myLeads)
+push(referenceInDB, inputEl.value)
+inputEl.value = "" 
+
 }) 
 
 
